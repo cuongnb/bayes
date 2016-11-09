@@ -17,22 +17,22 @@ public class Constant {
                 return "SoftEvident";
             }
         },
-        Small {
+        small {
             @Override
             public String toString() {
                 return "small";
             }
         },
-        Medium {
+        medium {
             @Override
             public String toString() {
-                return "Medium";
+                return "medium";
             }
         },
-        Large {
+        large {
             @Override
             public String toString() {
-                return "Large";
+                return "large";
             }
         }
     }

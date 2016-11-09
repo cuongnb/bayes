@@ -1,10 +1,8 @@
 package Main;
 
-import ObjetDraw.Chart;
 import ObjetDraw.Node;
 import ObjetDraw.ObjectCar;
 import ObjetDraw.Relationship;
-import com.sun.org.apache.regexp.internal.RE;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -22,4 +20,9 @@ public class ProjectManagement {
     // for new
     public static ArrayList<ObjectCar> objectCars = new ArrayList<ObjectCar>();
     public static ArrayList<String> parent_child = new ArrayList<String>();
+
+    // new
+    public static boolean isLink = false;
+    public static ArrayList<Node> nodes = new ArrayList<Node>();
+    public static Node currentNode = new Node();
 }

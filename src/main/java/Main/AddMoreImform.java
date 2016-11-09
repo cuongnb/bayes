@@ -50,22 +50,22 @@ public class AddMoreImform extends JFrame implements ActionListener {
         showModel.addActionListener(this);
     }
 
-    public static void main(String[] args) {
-        int numberParent = 3;
-        ArrayList<DrawKeyValue> parent = new ArrayList<DrawKeyValue>();
-        ArrayList<DrawKeyValue> outcome = new ArrayList<DrawKeyValue>();
-        for (int i = 0; i < numberParent; i++) {
-            parent.add(new DrawKeyValue("parent " + i));
-        }
-        int numberOutcome = 4;
-        for (int i = 0; i < numberOutcome; i++) {
-            outcome.add(new DrawKeyValue("outcone " + i, false));
-        }
-        AddMoreImform program = new AddMoreImform(parent, outcome);
-        program.setSize(300, 225);
-        program.setResizable(true);
-        program.setVisible(true);
-    }
+//    public static void main(String[] args) {
+//        int numberParent = 3;
+//        ArrayList<DrawKeyValue> parent = new ArrayList<DrawKeyValue>();
+//        ArrayList<DrawKeyValue> outcome = new ArrayList<DrawKeyValue>();
+//        for (int i = 0; i < numberParent; i++) {
+//            parent.add(new DrawKeyValue("parent " + i));
+//        }
+//        int numberOutcome = 4;
+//        for (int i = 0; i < numberOutcome; i++) {
+//            outcome.add(new DrawKeyValue("outcone " + i, false));
+//        }
+//        AddMoreImform program = new AddMoreImform(parent, outcome);
+//        program.setSize(300, 225);
+//        program.setResizable(true);
+//        program.setVisible(true);
+//    }
 
     @Override
     public void actionPerformed(ActionEvent evt) {

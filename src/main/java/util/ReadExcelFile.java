@@ -1,6 +1,7 @@
 package util;
 
 import Main.ProjectManagement;
+import ObjetDraw.Constant;
 import ObjetDraw.ObjectCar;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -13,7 +14,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 
 /**
  * Created by cuongnb on 11/8/16.
@@ -61,16 +61,44 @@ public class ReadExcelFile {
                         if (Cell.CELL_TYPE_STRING == cell.getCellType()) {
                             tmp.add(cell.getStringCellValue());
                             //The Cell Containing numeric value will contain marks
-                            System.out.println("okay");
                         } else if (Cell.CELL_TYPE_NUMERIC == cell.getCellType()) {
                             tmp.add(cell.getNumericCellValue() + "");
-                            System.out.println("number");
                         }
 
                     }
                     //end iterating a row, add all the elements of a row in list
                     if (tmp.size() > 0) {
-                        objectCar = new ObjectCar(tmp.get(0).toString().trim(), 5, 4, 3);
+                        int hoda = 0;
+                        int ford = 0;
+                        int mercedes = 0;
+                        if (tmp.get(1).toString().trim().equals(Constant.Level.small.toString())) {
+                            hoda = 3;
+                        } else if (tmp.get(1).toString().trim().equals(Constant.Level.medium.toString())) {
+                            hoda = 4;
+                        } else if (tmp.get(1).toString().trim().equals(Constant.Level.large.toString())) {
+                            hoda = 5;
+                        } else {
+                            hoda = 2;
+                        }
+                        if (tmp.get(2).toString().trim().equals(Constant.Level.small.toString())) {
+                            ford = 3;
+                        } else if (tmp.get(2).toString().trim().equals(Constant.Level.medium.toString())) {
+                            ford = 4;
+                        } else if (tmp.get(2).toString().trim().equals(Constant.Level.large.toString())) {
+                            ford = 5;
+                        } else {
+                            ford = 2;
+                        }
+                        if (tmp.get(3).toString().trim().equals(Constant.Level.small.toString())) {
+                            mercedes = 3;
+                        } else if (tmp.get(3).toString().trim().equals(Constant.Level.medium.toString())) {
+                            mercedes = 4;
+                        } else if (tmp.get(3).toString().trim().equals(Constant.Level.large.toString())) {
+                            mercedes = 5;
+                        } else {
+                            mercedes = 2;
+                        }
+                        objectCar = new ObjectCar(tmp.get(0).toString().trim(), hoda, ford, mercedes);
                         objectCars.add(objectCar);
                         if (!tmp.get(4).toString().equals("0.0")) {
                             String[] filed = tmp.get(4).split(";");

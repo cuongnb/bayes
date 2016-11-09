@@ -28,16 +28,48 @@ public class ObjectCar {
 
     public void precess() {
         for (int i = 0; i < 3; i++) {
-            small[0] = 80;
-            small[1] = 60;
-            small[2] = 40;
-            medium[0] = 10;
-            medium[1] = 50;
-            medium[2] = 30;
-            large[0] = 50;
-            large[1] = 70;
-            large[2] = 50;
-
+            small[0] = 0;
+            small[1] = 0;
+            small[2] = 0;
+            medium[0] = 0;
+            medium[1] = 0;
+            medium[2] = 0;
+            large[0] = 0;
+            large[1] = 0;
+            large[2] = 0;
+        }
+        if (honda == 5) {
+            large[0] += 100;
+        } else if (honda == 4) {
+            medium[0] += 100;
+        } else if (honda == 3) {
+            small[0] += 100;
+        } else {
+            small[0] += 33;
+            medium[0] += 33;
+            large[0] += 33;
+        }
+        if (ford == 5) {
+            large[1] += 100;
+        } else if (ford == 4) {
+            medium[1] += 100;
+        } else if (ford == 3) {
+            small[1] += 100;
+        } else {
+            small[1] += 33;
+            medium[1] += 33;
+            large[1] += 33;
+        }
+        if (mercedes == 5) {
+            large[2] += 100;
+        } else if (mercedes == 4) {
+            medium[2] += 100;
+        } else if (mercedes == 3) {
+            small[2] += 100;
+        } else {
+            small[2] += 33;
+            medium[2] += 33;
+            large[2] += 33;
         }
     }
 }

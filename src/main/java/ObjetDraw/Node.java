@@ -1,5 +1,7 @@
 package ObjetDraw;
 
+import Main.ProjectManagement;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.Ellipse2D;
@@ -18,9 +20,14 @@ public class Node implements Paintable {
     public Font font;
     private Ellipse2D bounds;
     boolean isFource = false;
-    public ArrayList<String> parent = new ArrayList<String>();
+    public ArrayList<Node> nodeParent = new ArrayList<Node>();
+    public ArrayList<DrawKeyValue> drawKeyValuesOutcome = new ArrayList<DrawKeyValue>();
     public ArrayList<String> oucomes = new ArrayList<String>();
     public ArrayList<Double> valueComes = new ArrayList<Double>();
+
+    public Node() {
+    }
+
 
     public Node(String fruit, Font font, int x, int y) {
         this.name = fruit;
@@ -38,7 +45,12 @@ public class Node implements Paintable {
         int height = fm.getHeight();
         int width = fm.stringWidth(name);
         if (isFource) {
-            g2.setColor(Color.RED);
+            if (ProjectManagement.isLink) {
+                g2.setColor(Color.GREEN);
+            } else {
+
+                g2.setColor(Color.RED);
+            }
         } else {
             g2.setColor(Color.WHITE);
         }
