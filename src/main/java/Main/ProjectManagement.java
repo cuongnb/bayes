@@ -25,4 +25,5 @@ public class ProjectManagement {
     public static boolean isLink = false;
     public static ArrayList<Node> nodes = new ArrayList<Node>();
     public static Node currentNode = new Node();
+    public static boolean isCondition = false;
 }

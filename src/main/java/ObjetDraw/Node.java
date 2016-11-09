@@ -22,8 +22,11 @@ public class Node implements Paintable {
     boolean isFource = false;
     public ArrayList<Node> nodeParent = new ArrayList<Node>();
     public ArrayList<DrawKeyValue> drawKeyValuesOutcome = new ArrayList<DrawKeyValue>();
+
     public ArrayList<String> oucomes = new ArrayList<String>();
     public ArrayList<Double> valueComes = new ArrayList<Double>();
+
+    public ArrayList<DrawKeyValue> nodeSelf = new ArrayList<DrawKeyValue>();
 
     public Node() {
     }

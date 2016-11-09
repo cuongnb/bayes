@@ -24,7 +24,10 @@ public class AddOutcome extends JFrame implements ActionListener {
         for (DrawKeyValue blabla : outcome) {
             JPanel jPanel1 = new JPanel();
             jPanel1.add(blabla.jLabelName);
-            jPanel1.add(blabla.jtfName);
+
+            if (!ProjectManagement.isCondition) {
+                jPanel1.add(blabla.jtfName);
+            }
             if (blabla.isleave) {
                 jPanel1.add(blabla.sValue);
                 jPanel1.add(blabla.jtfNameLeave);
@@ -44,6 +47,7 @@ public class AddOutcome extends JFrame implements ActionListener {
                 for (DrawKeyValue keyValue : outcome) {
                     ProjectManagement.currentNode.oucomes.add(keyValue.jtfName.getText().toString().trim());
                     ProjectManagement.currentNode.drawKeyValuesOutcome.add(keyValue);
+                    ProjectManagement.currentNode.nodeSelf.add(keyValue);
                 }
                 this.dispose();
             }

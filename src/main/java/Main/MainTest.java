@@ -34,6 +34,7 @@ public class MainTest extends JPanel implements ActionListener {
     JPanel numberOutcomePanel = new JPanel();
     JButton refresh = new JButton("Refresh");
     JButton edit = new JButton("Edit");
+    JButton setProbabilities = new JButton("Probabilities");
 
 
     public MainTest() {
@@ -41,6 +42,7 @@ public class MainTest extends JPanel implements ActionListener {
         this.relationships = ProjectManagement.relationships;
         this.baseFont = ProjectManagement.baseFont;
 
+        CreateTable createTable = new CreateTable();
 
         String fruit1 = "a";
         String fruit2 = "b";
@@ -52,6 +54,7 @@ public class MainTest extends JPanel implements ActionListener {
         numberOutcomePanel.add(tfNumberOutcome);
         numberOutcomePanel.add(addOutcome);
         add(numberOutcomePanel);
+        add(setProbabilities);
         add(edit);
         add(refresh);
 
@@ -59,6 +62,7 @@ public class MainTest extends JPanel implements ActionListener {
         isAddParent.addActionListener(this);
         addOutcome.addActionListener(this);
         edit.addActionListener(this);
+        setProbabilities.addActionListener(this);
 
         Node person = new Node(fruit1, baseFont, 150, 50);
         addFruit(person);
@@ -135,7 +139,7 @@ public class MainTest extends JPanel implements ActionListener {
             ArrayList<DrawKeyValue> outcome = new ArrayList<DrawKeyValue>();
             int numberOutcome = Integer.parseInt(tfNumberOutcome.getText());
             for (int i = 0; i < numberOutcome; i++) {
-                outcome.add(new DrawKeyValue("outcone " + i, true));
+                outcome.add(new DrawKeyValue("outcone " + i, false));
             }
             AddOutcome program = new AddOutcome(outcome);
             program.setSize(300, 225);
@@ -146,8 +150,111 @@ public class MainTest extends JPanel implements ActionListener {
             editNode.setSize(300, 225);
             editNode.setResizable(true);
             editNode.setVisible(true);
-        } else if (evt.getActionCommand() == "Refresh") {
+        } else if (evt.getActionCommand() == "Probabilities") {
+            int numParent = ProjectManagement.currentNode.nodeParent.size();
+            ArrayList<DrawKeyValue> outcome = new ArrayList<DrawKeyValue>();
+            if (numParent == 0) {
+                for (int i = 0; i < ProjectManagement.currentNode.oucomes.size(); i++) {
+                    DrawKeyValue keyValue = new DrawKeyValue("name", true);
+                    keyValue.jtfName.setText(ProjectManagement.currentNode.oucomes.get(i));
+                    outcome.add(keyValue);
+                }
+            } else {
+                int size = ProjectManagement.currentNode.nodeParent.size();
+                String name = "";
+                switch (size) {
+                    case 1:
+                        for (int m = 0; m < ProjectManagement.currentNode.oucomes.size(); m++) {
+                            for (int n = 0; n < ProjectManagement.currentNode.nodeParent.get(0).nodeSelf.size(); n++) {
+                                name = ProjectManagement.currentNode.oucomes.get(m) + " "
+                                        + ProjectManagement.currentNode.nodeParent.get(0).nodeSelf.get(n).jtfName.getText().toString().trim() + ":";
+                                ProjectManagement.isCondition = true;
+                                DrawKeyValue keyValue = new DrawKeyValue(name, true);
+                                outcome.add(keyValue);
+                            }
+                        }
+                        break;
+                    case 2:
+                        for (int m = 0; m < ProjectManagement.currentNode.oucomes.size(); m++) {
+                            for (int n = 0; n < ProjectManagement.currentNode.nodeParent.get(0).nodeSelf.size(); n++) {
+                                for (int p = 0; p < ProjectManagement.currentNode.nodeParent.get(1).nodeSelf.size(); p++) {
+                                    name = ProjectManagement.currentNode.oucomes.get(m) + " "
+                                            + ProjectManagement.currentNode.nodeParent.get(0).nodeSelf.get(n).jtfName.getText().toString() + " "
+                                            + ProjectManagement.currentNode.nodeParent.get(1).nodeSelf.get(p).jtfName.getText().toString() + ":";
+                                    ProjectManagement.isCondition = true;
+                                    DrawKeyValue keyValue = new DrawKeyValue(name, true);
+                                    outcome.add(keyValue);
+                                }
+                            }
+                        }
+                        break;
+                    case 3:
+                        for (int m = 0; m < ProjectManagement.currentNode.oucomes.size(); m++) {
+                            for (int n = 0; n < ProjectManagement.currentNode.nodeParent.get(0).nodeSelf.size(); n++) {
+                                for (int p = 0; p < ProjectManagement.currentNode.nodeParent.get(1).nodeSelf.size(); p++) {
+                                    for (int q = 0; q < ProjectManagement.currentNode.nodeParent.get(2).nodeSelf.size(); q++) {
+                                        name = ProjectManagement.currentNode.oucomes.get(m) +
+                                                " " + ProjectManagement.currentNode.nodeParent.get(0).nodeSelf.get(n).jtfName.getText().toString() +
+                                                " " + ProjectManagement.currentNode.nodeParent.get(1).nodeSelf.get(p).jtfName.getText().toString() +
+                                                " " + ProjectManagement.currentNode.nodeParent.get(2).nodeSelf.get(q).jtfName.getText().toString() + ":";
+                                        ProjectManagement.isCondition = true;
+                                        DrawKeyValue keyValue = new DrawKeyValue(name, true);
+                                        outcome.add(keyValue);
+                                    }
+                                }
+                            }
+                        }
+                        break;
+                    case 4:
+                        for (int m = 0; m < ProjectManagement.currentNode.oucomes.size(); m++) {
+                            for (int n = 0; n < ProjectManagement.currentNode.nodeParent.get(0).nodeSelf.size(); n++) {
+                                for (int p = 0; p < ProjectManagement.currentNode.nodeParent.get(1).nodeSelf.size(); p++) {
+                                    for (int q = 0; q < ProjectManagement.currentNode.nodeParent.get(2).nodeSelf.size(); q++) {
+                                        for (int r = 0; r < ProjectManagement.currentNode.nodeParent.get(3).nodeSelf.size(); r++) {
+                                            name = ProjectManagement.currentNode.oucomes.get(m) +
+                                                    " " + ProjectManagement.currentNode.nodeParent.get(0).nodeSelf.get(n).jtfName.getText().toString() +
+                                                    " " + ProjectManagement.currentNode.nodeParent.get(1).nodeSelf.get(p).jtfName.getText().toString() +
+                                                    " " + ProjectManagement.currentNode.nodeParent.get(2).nodeSelf.get(q).jtfName.getText().toString() +
+                                                    " " + ProjectManagement.currentNode.nodeParent.get(3).nodeSelf.get(r).jtfName.getText().toString() + ":";
+                                            ProjectManagement.isCondition = true;
+                                            DrawKeyValue keyValue = new DrawKeyValue(name, true);
+                                            outcome.add(keyValue);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        break;
+                    case 5:
+                        for (int m = 0; m < ProjectManagement.currentNode.oucomes.size(); m++) {
+                            for (int n = 0; n < ProjectManagement.currentNode.nodeParent.get(0).nodeSelf.size(); n++) {
+                                for (int p = 0; p < ProjectManagement.currentNode.nodeParent.get(1).nodeSelf.size(); p++) {
+                                    for (int q = 0; q < ProjectManagement.currentNode.nodeParent.get(2).nodeSelf.size(); q++) {
+                                        for (int r = 0; r < ProjectManagement.currentNode.nodeParent.get(3).nodeSelf.size(); r++) {
+                                            for (int s = 0; s < ProjectManagement.currentNode.nodeParent.get(4).nodeSelf.size(); s++) {
+                                                name = ProjectManagement.currentNode.oucomes.get(m) +
+                                                        " " + ProjectManagement.currentNode.nodeParent.get(0).nodeSelf.get(n).jtfName.getText().toString() +
+                                                        " " + ProjectManagement.currentNode.nodeParent.get(1).nodeSelf.get(p).jtfName.getText().toString() +
+                                                        " " + ProjectManagement.currentNode.nodeParent.get(2).nodeSelf.get(q).jtfName.getText().toString() +
+                                                        " " + ProjectManagement.currentNode.nodeParent.get(3).nodeSelf.get(r).jtfName.getText().toString() +
+                                                        " " + ProjectManagement.currentNode.nodeParent.get(4).nodeSelf.get(s).jtfName.getText().toString() + ":";
+                                                ProjectManagement.isCondition = true;
+                                                DrawKeyValue keyValue = new DrawKeyValue(name, true);
+                                                outcome.add(keyValue);
+                                            }
 
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        break;
+                }
+            }
+            AddOutcome program = new AddOutcome(outcome);
+            program.setSize(300, 225);
+            program.setResizable(true);
+            program.setVisible(true);
         }
     }
 
